@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECOV-NIB | Полная технологическая схема</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        :root {
+            --color-bg: #0a0a12;
+            --color-surface: rgba(20, 20, 30, 0.95);
+            --color-primary: #5d4fff;
+            --color-secondary: #00d4ff;
+            --color-accent: #ff6b9d;
+            --color-success: #00ff9d;
+            --color-text: #ffffff;
+            --color-text-secondary: #b0b0c0;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            --border-radius: 16px;
+            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(93, 79, 255, 0.2) 0%, transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 50% 50%, rgba(255, 107, 157, 0.1) 0%, transparent 40%),
+                linear-gradient(135deg, #0a0a12 0%, #151522 50%, #0a0a12 100%);
+            color: var(--color-text);
+            overflow-x: hidden;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        /* Навигация */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 10, 18, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+        
+        .nav-links a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 20px;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--color-text);
+            background: rgba(93, 79, 255, 0.2);
+        }
+        
+        /* Секции */
+        .section {
+            padding: var(--spacing-xl) var(--spacing-md);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--color-text), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            max-width: 1000px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.4rem;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-lg);
+            max-width: 800px;
+            font-weight: 400;
+        }
+        
+        .content-wrapper {
+            max-width: 1400px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Карточки */
+        .card {
+            background: var(--color-surface);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            width: 100%;
+            max-width: 1200px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            text-align: left;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            border-color: rgba(93, 79, 255, 0.3);
+        }
+        
+        .card-title {
+            font-size: 2.2rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-secondary);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .card-title i {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Схема производства - Визуальная схема */
+        .production-scheme {
+            width: 100%;
+            margin: var(--spacing-lg) 0;
+            position: relative;
+        }
+        
+        .scheme-visual {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: var(--spacing-xl) 0;
+            position: relative;
+            padding: var(--spacing-md);
+            background: rgba(10, 10, 20, 0.5);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .process-step-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            width: 20%;
+        }
+        
+        .step-visual-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-sm);
+            box-shadow: 0 10px 30px rgba(93, 79, 255, 0.3);
+            transition: var(--transition);
+        }
+        
+        .step-visual-circle:hover {
+            transform: scale(1.1);
+        }
+        
+        .step-visual-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+        }
+        
+        .step-visual-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-secondary);
+        }
+        
+        .step-visual-desc {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+        }
+        
+        .process-arrow {
+            font-size: 2rem;
+            color: var(--color-primary);
+            opacity: 0.5;
+        }
+        
+        /* Детальное описание модулей */
+        .module-detail {
+            background: rgba(25, 25, 40, 0.8);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-md) 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .module-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .module-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .module-title {
+            font-size: 2rem;
+            color: var(--color-secondary);
+        }
+        
+        .module-subtitle {
+            color: var(--color-text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        .module-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .spec-item {
+            padding: var(--spacing-md);
+            background: rgba(93, 79, 255, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid var(--color-primary);
+        }
+        
+        .spec-label {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-xs);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .spec-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .spec-desc {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .process-description {
+            margin-top: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: var(--border-radius);
+        }
+        
+        .process-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+        
+        .process-item {
+            padding: var(--spacing-sm);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+        }
+        
+        .process-item i {
+            color: var(--color-success);
+            margin-top: 3px;
+        }
+        
+        /* Технологическая схема SVG */
+        .tech-scheme-container {
+            width: 100%;
+            height: 400px;
+            margin: var(--spacing-xl) 0;
+            position: relative;
+            background: rgba(10, 10, 20, 0.5);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tech-scheme {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Футер */
+        .footer {
+            text-align: center;
+            padding: var(--spacing-xl) var(--spacing-md);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            background: rgba(10, 10, 18, 0.8);
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            .process-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .module-specs {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .scheme-visual {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: var(--spacing-lg);
+            }
+            
+            .process-step-visual {
+                width: 40%;
+                margin-bottom: var(--spacing-lg);
+            }
+            
+            .process-arrow {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .module-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .process-step-visual {
+                width: 100%;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        :root {
+            --color-bg: #0a0a12;
+            --color-surface: rgba(20, 20, 30, 0.9);
+            --color-primary: #5d4fff;
+            --color-secondary: #00d4ff;
+            --color-accent: #ff6b9d;
+            --color-success: #00ff9d;
+            --color-text: #ffffff;
+            --color-text-secondary: #b0b0c0;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            --border-radius: 16px;
+            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(93, 79, 255, 0.2) 0%, transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 50% 50%, rgba(255, 107, 157, 0.1) 0%, transparent 40%),
+                linear-gradient(135deg, #0a0a12 0%, #151522 50%, #0a0a12 100%);
+            color: var(--color-text);
+            overflow-x: hidden;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        /* Навигация */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 10, 18, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+        
+        .nav-links a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 20px;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--color-text);
+            background: rgba(93, 79, 255, 0.2);
+        }
+        
+        /* Секции */
+        .section {
+            padding: var(--spacing-xl) var(--spacing-md);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--color-text), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            max-width: 1000px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.4rem;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-lg);
+            max-width: 800px;
+            font-weight: 400;
+        }
+        
+        .content-wrapper {
+            max-width: 1400px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Герой секция */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        .hero-stat {
+            background: rgba(20, 20, 30, 0.8);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+        
+        .hero-stat:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-primary);
+            box-shadow: 0 10px 30px rgba(93, 79, 255, 0.2);
+        }
+        
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: var(--spacing-xs);
+            line-height: 1;
+        }
+        
+        .stat-label {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .stat-desc {
+            color: var(--color-text);
+            font-size: 0.9rem;
+        }
+        
+        /* Карточки */
+        .card {
+            background: var(--color-surface);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            width: 100%;
+            max-width: 1200px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            text-align: left;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            border-color: rgba(93, 79, 255, 0.3);
+        }
+        
+        .card-title {
+            font-size: 2.2rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-secondary);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .card-title i {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Детальная схема производства */
+        .production-scheme {
+            width: 100%;
+            margin: var(--spacing-lg) 0;
+            position: relative;
+        }
+        
+        .scheme-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xl);
+            position: relative;
+        }
+        
+        .scheme-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary), var(--color-accent));
+            transform: translateX(-50%);
+            border-radius: 2px;
+            z-index: 0;
+        }
+        
+        .process-step {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            flex-shrink: 0;
+            box-shadow: 0 10px 30px rgba(93, 79, 255, 0.3);
+        }
+        
+        .step-content {
+            flex: 1;
+            background: rgba(25, 25, 40, 0.8);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+        
+        .step-title {
+            font-size: 1.8rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-secondary);
+        }
+        
+        .step-subtitle {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+            font-size: 1.1rem;
+        }
+        
+        .step-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+        
+        .detail-item {
+            padding: var(--spacing-sm);
+            background: rgba(93, 79, 255, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid var(--color-primary);
+        }
+        
+        .detail-label {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-xs);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .detail-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+        
+        /* Техническая схема */
+        .technical-scheme {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .tech-module {
+            background: rgba(25, 25, 40, 0.8);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+        
+        .tech-module:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-secondary);
+        }
+        
+        .module-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .module-title {
+            font-size: 1.3rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-secondary);
+        }
+        
+        /* Детальное описание */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .info-block {
+            padding: var(--spacing-md);
+            background: rgba(25, 25, 40, 0.8);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .info-title {
+            font-size: 1.4rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-secondary);
+        }
+        
+        /* Экономика */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+        
+        .price-card {
+            background: rgba(25, 25, 40, 0.8);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+        
+        .price-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: var(--spacing-sm);
+            background: linear-gradient(135deg, var(--color-accent), #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .currency {
+            font-size: 1.2rem;
+            color: var(--color-text-secondary);
+        }
+        
+        /* Футер */
+        .footer {
+            text-align: center;
+            padding: var(--spacing-xl) var(--spacing-md);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            background: rgba(10, 10, 18, 0.8);
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .technical-scheme {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .step-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .scheme-line {
+                display: none;
+            }
+            
+            .technical-scheme {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="#hero" class="active">Главная</a>
+            <a href="#technology">Технология</a>
+            <a href="#tex">Схема производства</a>
+            <a href="#process">Технологический процесс</a>
+            <a href="#economics">Экономика</a>
+        </div>
+    </nav>
+    
+    <!-- Герой секция -->
+    <section class="section" id="hero">
+        <div class="content-wrapper">
+            <h1 class="section-title">Технология RECOV-NIB: Замкнутый цикл вместо выбросов</h1>
+            <p class="section-subtitle">Инновационная система преобразования промышленных отходов в ценные ресурсы с эффективностью до 99%</p>
+            
+            <div class="card fade-in">
+                <h2 class="card-title"><i class="fas fa-atom"></i> Технология будущего</h2>
+                <p style="font-size: 1.2rem; margin-bottom: var(--spacing-md);">RECOV-NIB — это революционный подход к промышленным процессам, который превращает отходы в ресурсы и создает полностью замкнутый производственный цикл. Технология основана на принципе метафизики абсорбции, используя магнитоидные токи и прочные энергии для достижения максимальной эффективности.</p>
+                
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="stat-label">Эффективность очистки</div>
+                        <div class="stat-value">99%</div>
+                        <div class="stat-desc">На всех этапах обработки выбросов</div>
+                    </div>
+                    
+                    <div class="hero-stat">
+                        <div class="stat-label">Полный цикл</div>
+                        <div class="stat-value">38ч</div>
+                        <div class="stat-desc">От выброса до готового продукта</div>
+                    </div>
+                    
+                    <div class="hero-stat">
+                        <div class="stat-label">Рекуперация сырья</div>
+                        <div class="stat-value">96%</div>
+                        <div class="stat-desc">Возврат материалов в производство</div>
+                    </div>
+                    
+                    <div class="hero-stat">
+                        <div class="stat-label">Энергоэффективность</div>
+                        <div class="stat-value">85%</div>
+                        <div class="stat-desc">Снижение энергопотребления</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Технология -->
+    <section class="section" id="technology">
+        <div class="content-wrapper">
+            <h2 class="section-title">Принцип работы технологии RECOV-NIB</h2>
+            <p class="section-subtitle">Детальное описание физических и химических процессов, лежащих в основе технологии</p>
+            
+            <div class="card fade-in">
+                <h3 class="card-title"><i class="fas fa-microscope"></i> Научная основа технологии</h3>
+                
+                <div class="info-grid">
+                    <div class="info-block">
+                        <h4 class="info-title">Метафизика абсорбции</h4>
+                        <p>Технология основана на принципе габаритной метафизической модели, где используются сложные абсорбционные процессы на основе ГЭБ (Газо-Энергетического Баланса). Система обеспечивает соединение более 20% рекуперируемых материалов с автоматическим выбором оптимального режима работы.</p>
+                    </div>
+                    
+                    <div class="info-block">
+                        <h4 class="info-title">Магнитоидные токи</h4>
+                        <p>Использование прочных энергий магнитных полей позволяет достигать температур 600-1200°C в магнитоидном абсорбере, что обеспечивает эффективную сепарацию компонентов газовой смеси с минимальными энергозатратами.</p>
+                    </div>
+                </div>
+                
+                <div class="technical-scheme">
+                    <div class="tech-module">
+                        <div class="module-icon"><i class="fas fa-filter"></i></div>
+                        <h4 class="module-title">Многоступенчатая фильтрация</h4>
+                        <p>Система включает 5 уровней фильтрации: механическую, электростатическую, HEPA, угольную и мембранную фильтрацию с размером пор до 0.1 микрон.</p>
+                    </div>
+                    
+                    <div class="tech-module">
+                        <div class="module-icon"><i class="fas fa-magnet"></i></div>
+                        <h4 class="module-title">Магнитоидная сепарация</h4>
+                        <p>Использование сверхпроводящих магнитов с индукцией до 2.5 Тесла для разделения компонентов газовой смеси по магнитным свойствам.</p>
+                    </div>
+                    
+                    <div class="tech-module">
+                        <div class="module-icon"><i class="fas fa-compress-arrows-alt"></i></div>
+                        <h4 class="module-title">Концентрирование на ГЭБ</h4>
+                        <p>ГЭБ-панели работают при температуре 250-400°C, обеспечивая концентрацию ценных элементов до 98% с минимальными потерями.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Схема производства -->
+   
+    <section class="section" id="tex">
+        <div class="content-wrapper">
+            <h1 class="section-title">Cхема производства RECOV-NIB</h1>
+            <p class="section-subtitle">Детальная архитектурная схема системы и технологические модули с пошаговым описанием процессов</p>
+            
+            <div class="card fade-in">
+                <h2 class="card-title"><i class="fas fa-project-diagram"></i> Технологическая схема производства</h2>
+                <p style="font-size: 1.2rem; margin-bottom: var(--spacing-md);">Технология RECOV-NIB представляет собой комплексную систему из 4 взаимосвязанных модулей, которые преобразуют промышленные выбросы в ценные ресурсы с эффективностью до 99%. Каждый модуль выполняет специфические функции и контролируется центральной системой управления.</p>
+                
+                <!-- Визуальная схема процесса -->
+                <div class="scheme-visual fade-in">
+                    <div class="process-step-visual">
+                        <div class="step-visual-circle">
+                            <div class="step-visual-number">1</div>
+                        </div>
+                        <div class="step-visual-title">Забор и фильтрация</div>
+                        <div class="step-visual-desc">Прием и очистка выбросов</div>
+                    </div>
+                    
+                    <div class="process-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    
+                    <div class="process-step-visual">
+                        <div class="step-visual-circle">
+                            <div class="step-visual-number">2</div>
+                        </div>
+                        <div class="step-visual-title">Магнитоидная обработка</div>
+                        <div class="step-visual-desc">Сепарация компонентов</div>
+                    </div>
+                    
+                    <div class="process-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    
+                    <div class="process-step-visual">
+                        <div class="step-visual-circle">
+                            <div class="step-visual-number">3</div>
+                        </div>
+                        <div class="step-visual-title">Концентрирование</div>
+                        <div class="step-visual-desc">На ГЭБ-панелях</div>
+                    </div>
+                    
+                    <div class="process-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    
+                    <div class="process-step-visual">
+                        <div class="step-visual-circle">
+                            <div class="step-visual-number">4</div>
+                        </div>
+                        <div class="step-visual-title">Регенерация</div>
+                        <div class="step-visual-desc">Возврат в производство</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: var(--spacing-md); text-align: center;">
+                    <p style="color: var(--color-text-secondary);">Каждый этап контролируется системой ИИ, которая анализирует более 500 параметров в реальном времени и оптимизирует процесс для максимальной эффективности.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Детальная схема производства -->
+    <section class="section" id="scheme">
+        <div class="content-wrapper">
+            <h2 class="section-title">Детальная схема производственного процесса</h2>
+            <p class="section-subtitle">Полное пошаговое описание каждого технологического этапа с техническими параметрами</p>
+            
+            <div class="card fade-in">
+                <h3 class="card-title"><i class="fas fa-industry"></i> Полная производственная линия RECOV-NIB</h3>
+                
+                <!-- SVG схема производства -->
+                <div class="tech-scheme-container">
+                    <svg class="tech-scheme" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Фон -->
+                        <rect width="1200" height="400" fill="rgba(10,10,20,0.5)"/>
+                        
+                        <!-- Модуль 1 -->
+                        <rect x="50" y="150" width="200" height="100" rx="10" fill="rgba(93,79,255,0.2)" stroke="#5d4fff" stroke-width="2"/>
+                        <text x="150" y="180" text-anchor="middle" fill="#00d4ff" font-family="Inter" font-weight="600" font-size="16">1. ЗАБОР</text>
+                        <text x="150" y="210" text-anchor="middle" fill="#ffffff" font-family="Inter" font-size="12">Воздуховоды</text>
+                        <text x="150" y="230" text-anchor="middle" fill="#b0b0c0" font-family="Inter" font-size="10">1000-5500 м³/ч</text>
+                        
+                        <!-- Стрелка -->
+                        <path d="M270 200 L320 200" stroke="#5d4fff" stroke-width="2" fill="none"/>
+                        <polygon points="320,200 310,195 310,205" fill="#5d4fff"/>
+                        
+                        <!-- Модуль 2 -->
+                        <rect x="340" y="100" width="200" height="200" rx="10" fill="rgba(0,212,255,0.2)" stroke="#00d4ff" stroke-width="2"/>
+                        <text x="440" y="140" text-anchor="middle" fill="#00d4ff" font-family="Inter" font-weight="600" font-size="16">2. ФИЛЬТРАЦИЯ</text>
+                        <text x="440" y="170" text-anchor="middle" fill="#ffffff" font-family="Inter" font-size="12">5-ступенчатая</text>
+                        <text x="440" y="190" text-anchor="middle" fill="#b0b0c0" font-family="Inter" font-size="10">0.1 мкм</text>
+                        <text x="440" y="210" text-anchor="middle" fill="#ffffff" font-family="Inter" font-size="12">85% эффективность</text>
+                        
+                        <!-- Стрелка -->
+                        <path d="M560 200 L610 200" stroke="#5d4fff" stroke-width="2" fill="none"/>
+                        <polygon points="610,200 600,195 600,205" fill="#5d4fff"/>
+                        
+                        <!-- Модуль 3 -->
+                        <circle cx="750" cy="200" r="80" fill="rgba(255,107,157,0.2)" stroke="#ff6b9d" stroke-width="2"/>
+                        <text x="750" y="190" text-anchor="middle" fill="#00d4ff" font-family="Inter" font-weight="600" font-size="16">3. РЕАКТОР</text>
+                        <text x="750" y="210" text-anchor="middle" fill="#ffffff" font-family="Inter" font-size="12">600-1200°C</text>
+                        <text x="750" y="230" text-anchor="middle" fill="#b0b0c0" font-family="Inter" font-size="10">2.5 Тесла</text>
+                        
+                        <!-- Стрелка -->
+                        <path d="M830 200 L880 200" stroke="#5d4fff" stroke-width="2" fill="none"/>
+                        <polygon points="880,200 870,195 870,205" fill="#5d4fff"/>
+                        
+                        <!-- Модуль 4 -->
+                        <rect x="900" y="150" width="200" height="100" rx="10" fill="rgba(0,255,157,0.2)" stroke="#00ff9d" stroke-width="2"/>
+                        <text x="1000" y="180" text-anchor="middle" fill="#00d4ff" font-family="Inter" font-weight="600" font-size="16">4. КОНЦЕНТРАЦИЯ</text>
+                        <text x="1000" y="210" text-anchor="middle" fill="#ffffff" font-family="Inter" font-size="12">ГЭБ-панели</text>
+                        <text x="1000" y="230" text-anchor="middle" fill="#b0b0c0" font-family="Inter" font-size="10">96% возврат</text>
+                        
+                        <!-- Линия процесса -->
+                        <path d="M50 200 C150 50, 250 350, 340 200" stroke="rgba(93,79,255,0.5)" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        <path d="M560 200 C650 50, 750 350, 830 200" stroke="rgba(93,79,255,0.5)" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        
+                        <!-- Вход/выход -->
+                        <rect x="20" y="180" width="30" height="40" rx="5" fill="rgba(255,255,255,0.1)" stroke="#ffffff" stroke-width="1"/>
+                        <text x="35" y="205" text-anchor="middle" fill="#ffffff" font-family="Inter" font-size="10">Вход</text>
+                        
+                        <rect x="1150" y="180" width="30" height="40" rx="5" fill="rgba(255,255,255,0.1)" stroke="#ffffff" stroke-width="1"/>
+                        <text x="1165" y="205" text-anchor="middle" fill="#ffffff" font-family="Inter" font-size="10">Выход</text>
+                    </svg>
+                </div>
+                
+                <div style="margin-top: var(--spacing-lg);">
+                    <h4 style="color: var(--color-secondary); margin-bottom: var(--spacing-md); text-align: center;">Описание технологического потока</h4>
+                    
+                    <div class="process-description">
+                        <p><strong>Направление процесса:</strong> Промышленные выбросы → Система забора → Многоступенчатая фильтрация → Магнитоидный реактор → Концентрирование на ГЭБ-панелях → Возврат сырья в производство</p>
+                        
+                        <div class="process-list">
+                            <div class="process-item">
+                                <i class="fas fa-arrow-right"></i>
+                                <div>
+                                    <strong>Входные параметры:</strong> Температура 20-400°C, давление 1-5 атм, расход 1000-5500 м³/ч
+                                </div>
+                            </div>
+                            
+                            <div class="process-item">
+                                <i class="fas fa-arrow-right"></i>
+                                <div>
+                                    <strong>Обработка в реакторе:</strong> Нагрев до 600-1200°C в магнитном поле 2.5 Тесла в течение 4-8 часов
+                                </div>
+                            </div>
+                            
+                            <div class="process-item">
+                                <i class="fas fa-arrow-right"></i>
+                                <div>
+                                    <strong>Концентрирование:</strong> На ГЭБ-панелях при температуре 250-400°C с коэффициентом концентрирования 150:1
+                                </div>
+                            </div>
+                            
+                            <div class="process-item">
+                                <i class="fas fa-arrow-right"></i>
+                                <div>
+                                    <strong>Выходные параметры:</strong> 96% возврат сырья, размер частиц 10-100 микрон, готов к использованию в производстве
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Технологические модули -->
+    <section class="section" id="modules">
+        <div class="content-wrapper">
+            <h2 class="section-title">Технологические модули системы RECOV-NIB</h2>
+            <p class="section-subtitle">Детальное описание каждого модуля с техническими характеристиками и процессами</p>
+            
+            <!-- Модуль 1 -->
+            <div class="card fade-in">
+                <div class="module-detail">
+                    <div class="module-header">
+                        <div class="module-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <div>
+                            <h3 class="module-title">Модуль забора и первичной обработки</h3>
+                            <p class="module-subtitle">Система приема промышленных выбросов с предварительной обработкой</p>
+                        </div>
+                    </div>
+                    
+                    <div class="module-specs">
+                        <div class="spec-item">
+                            <div class="spec-label">Производительность</div>
+                            <div class="spec-value">1500–5500 м³/ч</div>
+                            <div class="spec-desc">В зависимости от типа производства</div>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <div class="spec-label">Температура обработки</div>
+                            <div class="spec-value">20–400°C</div>
+                            <div class="spec-desc">Автоматическая регулировка</div>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <div class="spec-label">Система фильтрации</div>
+                            <div class="spec-value">5-ступенчатая</div>
+                            <div class="spec-desc">Механическая, электростатическая, HEPA, угольная, мембранная</div>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <div class="spec-label">Эффективность</div>
+                            <div class="spec-value">85% на входе</div>
+                            <div class="spec-desc">После первичной обработки</div>
+                        </div>
+                    </div>
+                    
+                    <h4 style="color: var(--color-secondary); margin-top: var(--spacing-md); margin-bottom: var(--spacing-sm);">Подробное описание процесса:</h4>
+                    
+                    <div class="process-description">
+                        <p><strong>Процесс забора выбросов:</strong> Система включает усиленные керамические воздуховоды диаметром 500-800 мм, которые подключаются непосредственно к источникам выбросов. Материал воздуховодов - керамика с покрытием из карбида кремния, выдерживающая температуру до 800°C.</p>
+                        
+                        <p><strong>Теплообменная система:</strong> Для охлаждения газов используется пластинчатый теплообменник с автоматической регулировкой температуры. Хладагент - вода с добавлением ингибиторов коррозии. Система позволяет снизить температуру с 400°C до 150°C за 2-3 минуты.</p>
+                        
+                        <p><strong>5-ступенчатая фильтрация:</strong></p>
+                        <ol style="padding-left: var(--spacing-md); color: var(--color-text-secondary); margin-top: var(--spacing-sm);">
+                            <li><strong>Механическая фильтрация:</strong> Удаление частиц размером более 10 микрон (эффективность 95%)</li>
+                            <li><strong>Электростатическая очистка:</strong> Удаление мелкодисперсных частиц 1-10 микрон (эффективность 90%)</li>
+                            <li><strong>HEPA-фильтрация:</strong> Удаление частиц до 0.3 микрона (эффективность 99.97%)</li>
+                            <li><strong>Угольная адсорбция:</strong> Удаление органических соединений и запахов</li>
+                            <li><strong>Мембранная фильтрация:</strong> Удаление частиц до 0.1 микрона (эффективность 99.99%)</li>
+                        </ol>
+                        
+                        <p><strong>Система управления:</strong> Автоматические клапаны с пневматическим приводом регулируют поток в зависимости от состава выбросов, который анализируется в реальном времени масс-спектрометром. Датчики давления, температуры и состава установлены через каждые 2 метра воздуховодов.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Модуль 2 -->
+            <div class="card fade-in">
+                <div class="module-detail">
+                    <div class="module-header">
+                        <div class="module-icon">
+                            <i class="fas fa-magnet"></i>
+                        </div>
+                        <div>
+                            <h3 class="module-title">Магнитоидный реакторный модуль</h3>
+                            <p class="module-subtitle">Высокотемпературная обработка в магнитном поле</p>
+                        </div>
+                    </div>
+                    
+                    <div class="module-specs">
+                        <div class="spec-item">
+                            <div class="spec-label">Температура</div>
+                            <div class="spec-value">600–1200°C</div>
+                            <div class="spec-desc">Точность регулировки ±5°C</div>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <div class="spec-label">Магнитное поле</div>
+                            <div class="spec-value">2.5 Тесла</div>
+                            <div class="spec-desc">Сверхпроводящие магниты</div>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <div class="spec-label">Время обработки</div>
+                            <div class="spec-value">4–8 часов</div>
+                            <div class="spec-desc">В зависимости от состава</div>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <div class="spec-label">Сепарация</div>
+                            <div class="spec-value">98% эффективность</div>
+                            <div class="spec-desc">Разделение компонентов</div>
+                        </div>
+                    </div>
+                    
+                    <h4 style="color: var(--color-secondary); margin-top: var(--spacing-md); margin-bottom: var(--spacing-sm);">Подробное описание процесса:</h4>
+                    
+                    <div class="process-description">
+                        <p><strong>Конструкция реактора:</strong> Реактор состоит из сверхпроводящих магнитов на основе ниобий-титанового сплава, охлаждаемых жидким гелием до температуры 4.2K. Камера реактора изготовлена из керамики на основе оксида алюминия с покрытием из карбида кремния, выдерживающая температуру до 1500°C.</p>
+                        
+                        <p><strong>Процесс магнитоидной сепарации:</strong> Под воздействием магнитного поля 2.5 Тесла компоненты газовой смеси разделяются по магнитным свойствам. Парамагнитные материалы притягиваются к стенкам камеры, диамагнитные - концентрируются в центре. Процесс происходит при температуре 600-1200°C, что обеспечивает высокую подвижность молекул.</p>
+                        
+                        <p><strong>Система нагрева:</strong> Нагрев осуществляется индукционным способом с использованием высокочастотных катушек (частота 100-500 кГц). Мощность нагрева - 500 кВт. Система обеспечивает равномерный нагрев по всему объему камеры с градиентом температуры не более 10°C.</p>
+                        
+                        <p><strong>Процесс сепарации по этапам:</strong></p>
+                        <ol style="padding-left: var(--spacing-md); color: var(--color-text-secondary); margin-top: var(--spacing-sm);">
+                            <li><strong>Нагрев до 600°C:</strong> Предварительный нагрев для удаления летучих соединений (30 минут)</li>
+                            <li><strong>Магнитная сепарация при 800°C:</strong> Основной этап разделения компонентов (3-6 часов)</li>
+                            <li><strong>Доводка при 1000-1200°C:</strong> Окончательное разделение трудносепаратируемых компонентов (1-2 часа)</li>
+                            <li><strong>Охлаждение до 200°C:</strong> Подготовка к следующему этапу (1 час)</li>
+                        </ol>
+                        
+                        <p><strong>Система контроля:</strong> Температура контролируется 20 термопарами типа K, равномерно распределенными по камере. Магнитное поле измеряется датчиками Холла с точностью ±0.01 Тесла. Состав газов анализируется масс-спектрометром каждые 15 минут.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Модуль 3 и 4 -->
+            <div class="card fade-in">
+                <div class="module-detail">
+                    <div class="module-header">
+                        <div class="module-icon">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="module-title">Модуль концентрирования ГЭБ и регенерации</h3>
+                            <p class="module-subtitle">Концентрирование ценных элементов и возврат в производственный цикл</p>
+                        </div>
+                    </div>
+                    
+                    <div class="module-specs">
+                        <div class="spec-item">
+                            <div class="spec-label">Температура концентрирования</div>
+                            <div class="spec-value">250-400°C</div>
+                            <div class="spec-desc">В вакуумных условиях</div>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <div class="spec-label">Коэффициент концентрации</div>
+                            <div class="spec-value">150:1</div>
+                            <div class="spec-desc">Увеличение концентрации</div>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <div class="spec-label">Время цикла</div>
+                            <div class="spec-value">12 часов</div>
+                            <div class="spec-desc">Полный цикл обработки</div>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <div class="spec-label">Возврат сырья</div>
+                            <div class="spec-value">96%</div>
+                            <div class="spec-desc">Готового продукта</div>
+                        </div>
+                    </div>
+                    
+                    <h4 style="color: var(--color-secondary); margin-top: var(--spacing-md); margin-bottom: var(--spacing-sm);">Подробное описание процесса:</h4>
+                    
+                    <div class="process-description">
+                        <p><strong>ГЭБ-панели (Газо-Энергетические Балансирующие):</strong> Панели изготовлены из композитного материала на основе карбида вольфрама с нано-покрытием из графена. Размер панелей 1000×500×50 мм, рабочая площадь 0.5 м² каждая. В системе установлено 20 панелей, общая рабочая площадь 10 м².</p>
+                        
+                        <p><strong>Процесс концентрирования:</strong> Подготовленные газы подаются в вакуумную камеру (давление 10⁻³ Па), где происходит концентрирование на ГЭБ-панелях при температуре до 96 kD°C. Процесс основан на принципе дифференциальной адсорбции - различные компоненты адсорбируются на панелях с разной силой, что позволяет разделить их.</p>
+                        
+                        <p><strong>Этапы концентрирования:</strong></p>
+                        <ol style="padding-left: var(--spacing-md); color: var(--color-text-secondary); margin-top: var(--spacing-sm);">
+                            <li><strong>Адсорбция:</strong> Компоненты газа адсорбируются на поверхности ГЭБ-панелей (2 часа)</li>
+                            <li><strong>Термическая десорбция:</strong> Поэтапный нагрев для снятия различных компонентов (4 часа)</li>
+                            <li><strong>Кристаллизация:</strong> Выделенные компоненты кристаллизуются в отдельных камерах (3 часа)</li>
+                            <li><strong>Сбор и упаковка:</strong> Автоматический сбор кристаллов и упаковка в контейнеры (3 часа)</li>
+                        </ol>
+                        
+                        <p><strong>Система регенерации:</strong> Концентрированные материалы проходят дополнительную обработку - измельчение до размера частиц 10-100 микрон, смешивание для достижения однородности, и упаковку в биг-бэги по 1 тонне. Каждая партия проходит химический анализ на соответствие стандартам качества.</p>
+                        
+                        <p><strong>Автоматизация процесса:</strong> Весь процесс контролируется системой на базе ИИ, которая анализирует данные с 200 датчиков, оптимизирует параметры процесса и прогнозирует необходимость технического обслуживания. Система обеспечивает автоматический переход между этапами без участия оператора.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Технологический процесс -->
+    <section class="section" id="process">
+        <div class="content-wrapper">
+            <h2 class="section-title">Детальный технологический процесс</h2>
+            <p class="section-subtitle">Пошаговое описание физико-химических процессов с временными параметрами</p>
+            
+            <div class="card fade-in">
+                <h3 class="card-title"><i class="fas fa-cogs"></i> Полный цикл обработки от выбросов до готового продукта</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-md); margin: var(--spacing-lg) 0;">
+                    <div style="padding: var(--spacing-md); background: rgba(93, 79, 255, 0.1); border-radius: var(--border-radius); text-align: center;">
+                        <div style="font-size: 2rem; color: var(--color-secondary); margin-bottom: var(--spacing-sm);">1-2 ч</div>
+                        <div style="font-weight: 600; color: var(--color-text); margin-bottom: var(--spacing-xs);">Забор и охлаждение</div>
+                        <div style="font-size: 0.9rem; color: var(--color-text-secondary);">Температура: 400°C → 150°C</div>
+                    </div>
+                    
+                    <div style="padding: var(--spacing-md); background: rgba(0, 212, 255, 0.1); border-radius: var(--border-radius); text-align: center;">
+                        <div style="font-size: 2rem; color: var(--color-secondary); margin-bottom: var(--spacing-sm);">4-8 ч</div>
+                        <div style="font-weight: 600; color: var(--color-text); margin-bottom: var(--spacing-xs);">Магнитоидная сепарация</div>
+                        <div style="font-size: 0.9rem; color: var(--color-text-secondary);">Температура: 600-1200°C</div>
+                    </div>
+                    
+                    <div style="padding: var(--spacing-md); background: rgba(255, 107, 157, 0.1); border-radius: var(--border-radius); text-align: center;">
+                        <div style="font-size: 2rem; color: var(--color-secondary); margin-bottom: var(--spacing-sm);">6-8 ч</div>
+                        <div style="font-weight: 600; color: var(--color-text); margin-bottom: var(--spacing-xs);">Концентрирование</div>
+                        <div style="font-size: 0.9rem; color: var(--color-text-secondary);">На ГЭБ-панелях</div>
+                    </div>
+                    
+                    <div style="padding: var(--spacing-md); background: rgba(0, 255, 157, 0.1); border-radius: var(--border-radius); text-align: center;">
+                        <div style="font-size: 2rem; color: var(--color-secondary); margin-bottom: var(--spacing-sm);">2-4 ч</div>
+                        <div style="font-weight: 600; color: var(--color-text); margin-bottom: var(--spacing-xs);">Регенерация</div>
+                        <div style="font-size: 0.9rem; color: var(--color-text-secondary);">Подготовка сырья</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: var(--spacing-lg);">
+                    <h4 style="color: var(--color-secondary); margin-bottom: var(--spacing-md);">Суточный цикл производства:</h4>
+                    
+                    <div style="background: rgba(25, 25, 40, 0.8); border-radius: var(--border-radius); padding: var(--spacing-md);">
+                        <p><strong>Утренняя смена (8:00-16:00):</strong> Забор выбросов с металлургического производства, первичная фильтрация, начало магнитоидной обработки.</p>
+                        <p><strong>Вечерняя смена (16:00-00:00):</strong> Продолжение магнитоидной обработки, начало концентрирования на ГЭБ-панелях.</p>
+                        <p><strong>Ночная смена (00:00-8:00):</strong> Завершение концентрирования, регенерация сырья, упаковка готовой продукции, плановое обслуживание оборудования.</p>
+                        <p><strong>Выходной продукт:</strong> Ежедневно система производит 5-10 тонн регенерированного сырья, готового к использованию в производстве.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+   
+    
+    
+   
+    
+    <script>
+    
+    // Обновление активной навигации
+        function updateNavigation() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let currentSectionId = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+                    currentSectionId = section.id;
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSectionId}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        // Анимация появления элементов при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', () => {
+            // Наблюдаем за карточками
+            document.querySelectorAll('.card').forEach(card => {
+                observer.observe(card);
+            });
+            
+            // Наблюдаем за шагами процесса
+            document.querySelectorAll('.process-step').forEach(step => {
+                observer.observe(step);
+            });
+            
+            // Плавная прокрутка для навигации
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Обновление навигации при скролле
+            window.addEventListener('scroll', updateNavigation);
+            updateNavigation();
+            
+            // Создание анимированного фона
+            createBackgroundParticles();
+        });
+        
+        function createBackgroundParticles() {
+            const colors = [
+                'rgba(93, 79, 255, 0.1)',
+                'rgba(0, 212, 255, 0.08)',
+                'rgba(255, 107, 157, 0.06)',
+                'rgba(0, 255, 157, 0.05)'
+            ];
+            
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                const size = Math.random() * 300 + 100;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const duration = Math.random() * 40 + 20;
+                
+                particle.style.position = 'fixed';
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.background = `radial-gradient(circle, ${color}, transparent)`;
+                particle.style.borderRadius = '50%';
+                particle.style.zIndex = '-1';
+                particle.style.pointerEvents = 'none';
+                
+                // Анимация
+                particle.animate([
+                    { transform: 'translate(0, 0) scale(1)', opacity: 0.3 },
+                    { transform: `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) scale(${Math.random() * 0.5 + 0.8})`, opacity: 0.1 }
+                ], {
+                    duration: duration * 1000,
+                    iterations: Infinity,
+                    direction: 'alternate',
+                    easing: 'ease-in-out'
+                });
+                
+                document.body.appendChild(particle);
+            }
+        }
+    </script>
+</body>
+</html>
+ 
+      
