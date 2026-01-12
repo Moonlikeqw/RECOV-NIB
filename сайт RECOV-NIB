@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проектный реферат: RECOV-NIB | Для инвестора</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Times New Roman', serif;
+        }
+        
+        body {
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            font-size: 12pt;
+            padding: 0;
+            margin: 0;
+            max-width: 210mm;
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Страница A4 */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            position: relative;
+            page-break-after: always;
+            background: white;
+        }
+        
+        /* Титульная страница */
+        .title-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-bottom: 3px solid #0056b3;
+        }
+        
+        .university {
+            font-size: 14pt;
+            font-weight: 600;
+            margin-bottom: 20mm;
+            color: #333333;
+        }
+        
+        .project-title {
+            font-size: 24pt;
+            font-weight: 800;
+            margin-bottom: 10mm;
+            line-height: 1.2;
+            color: #0056b3;
+            text-transform: uppercase;
+        }
+        
+        .project-subtitle {
+            font-size: 14pt;
+            font-weight: 400;
+            margin-bottom: 20mm;
+            color: #333333;
+            max-width: 160mm;
+        }
+        
+        .author-info {
+            font-size: 12pt;
+            margin-top: 30mm;
+            color: #666666;
+        }
+        
+        .date {
+            font-size: 12pt;
+            margin-top: 5mm;
+            color: #666666;
+        }
+        
+        /* Общий контент */
+        .section {
+            margin-bottom: 8mm;
+        }
+        
+        .section-title {
+            font-size: 16pt;
+            font-weight: 700;
+            margin-bottom: 4mm;
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 2mm;
+        }
+        
+        .subsection-title {
+            font-size: 14pt;
+            font-weight: 600;
+            margin: 4mm 0 2mm 0;
+            color: #333333;
+        }
+        
+        p {
+            margin-bottom: 3mm;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 6mm;
+            margin-bottom: 3mm;
+        }
+        
+        li {
+            margin-bottom: 1mm;
+        }
+        
+        /* Таблицы */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 4mm 0;
+            font-size: 11pt;
+        }
+        
+        th {
+            background-color: #f0f7ff;
+            font-weight: 600;
+            padding: 2mm;
+            border: 1px solid #cccccc;
+            text-align: left;
+        }
+        
+        td {
+            padding: 2mm;
+            border: 1px solid #cccccc;
+        }
+        
+        /* Выделения */
+        .highlight {
+            background-color: #f0f7ff;
+            padding: 2mm;
+            border-left: 4px solid #0056b3;
+            margin: 3mm 0;
+            font-style: italic;
+        }
+        
+        .key-point {
+            font-weight: 600;
+            color: #0056b3;
+        }
+        
+        /* Схема процесса */
+        .process-diagram {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 6mm 0;
+            padding: 4mm;
+            background-color: #f9f9f9;
+            border: 1px solid #dddddd;
+        }
+        
+        .process-step {
+            text-align: center;
+            flex: 1;
+            padding: 2mm;
+        }
+        
+        .step-number {
+            width: 8mm;
+            height: 8mm;
+            background-color: #0056b3;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2mm auto;
+            font-weight: 700;
+        }
+        
+        .step-title {
+            font-size: 10pt;
+            font-weight: 600;
+            margin-bottom: 1mm;
+        }
+        
+        .step-desc {
+            font-size: 9pt;
+            color: #666666;
+        }
+        
+        .process-arrow {
+            color: #0056b3;
+            font-size: 12pt;
+        }
+        
+        /* Финансовые показатели */
+        .financial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3mm;
+            margin: 4mm 0;
+        }
+        
+        .financial-item {
+            padding: 3mm;
+            border: 1px solid #dddddd;
+            background-color: #f9f9f9;
+        }
+        
+        .financial-value {
+            font-size: 16pt;
+            font-weight: 800;
+            color: #0056b3;
+            margin-bottom: 1mm;
+        }
+        
+        .financial-label {
+            font-size: 10pt;
+            color: #666666;
+        }
+        
+        /* Футер страницы */
+        .page-footer {
+            position: absolute;
+            bottom: 15mm;
+            width: calc(100% - 40mm);
+            font-size: 9pt;
+            color: #999999;
+            text-align: center;
+            border-top: 1px solid #eeeeee;
+            padding-top: 2mm;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 15mm;
+            right: 20mm;
+            font-size: 10pt;
+            color: #999999;
+        }
+        
+        /* Адаптация для печати */
+        @media print {
+            body {
+                box-shadow: none;
+            }
+            
+            .page {
+                margin: 0;
+                padding: 20mm;
+                page-break-after: always;
+            }
+            
+            .page-break {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Страница 1: Титульный лист -->
+    <div class="page title-page">
+        <div class="university">ИННОВАЦИОННЫЙ ТЕХНОЛОГИЧЕСКИЙ ПРОЕКТ</div>
+        
+        <div class="project-title">RECOV-NIB</div>
+        <div class="project-subtitle">Технология замкнутого цикла промышленного производства с рекуперацией 99% отходов</div>
+        
+        <div class="author-info">
+            <p><strong>Автор проекта:</strong> Конфиденциально</p>
+            <p><strong>Контактная информация:</strong> Конфиденциально</p>
+        </div>
+        
+        <div class="date">Январь 2026 года</div>
+        
+        <div class="page-footer">Конфиденциально. Для внутреннего использования инвесторами.</div>
+        <div class="page-number">1</div>
+    </div>
+    
+    <!-- Страница 2: Содержание проекта -->
+    <div class="page">
+        <div class="section">
+            <div class="section-title">РЕФЕРАТ ПРОЕКТА</div>
+            <p>Проект RECOV-NIB представляет собой инновационную технологическую систему, предназначенную для преобразования промышленных выбросов в ценные ресурсы с эффективностью до 99%. Технология основана на принципе замкнутого цикла производства, что позволяет промышленным предприятиям не только устранить экологические проблемы, но и получить значительную экономическую выгоду.</p>
+            
+            <div class="highlight">
+                <p><strong>Ключевые показатели проекта:</strong> Эффективность очистки — 99%, возврат сырья в производство — 96%, снижение энергопотребления — 25%, срок окупаемости — 3,9 года, NPV (5 лет) — 8,4 млрд сум.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">1. ОПИСАНИЕ ПРОБЛЕМЫ И РЕШЕНИЯ</div>
+            
+            <div class="subsection-title">1.1. Проблематика промышленных выбросов</div>
+            <p>Промышленные предприятия Узбекистана ежегодно сталкиваются с:</p>
+            <ul>
+                <li>Экологическими штрафами на сумму до 500 млн сум в год</li>
+                <li>Потерей ценного сырья через выбросы (до 40% от общего объема)</li>
+                <li>Высокими затратами на очистные сооружения (до 15% от операционных расходов)</li>
+                <li>Риском приостановки деятельности по решению контролирующих органов</li>
+                <li>Негативным влиянием на экологию и здоровье населения</li>
+            </ul>
+            
+            <div class="subsection-title">1.2. Предлагаемое решение</div>
+            <p>Технология RECOV-NIB предлагает комплексное решение, основанное на четырех взаимосвязанных модулях:</p>
+            
+            <div class="process-diagram">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Забор и фильтрация</div>
+                    <div class="step-desc">1500-5500 м³/ч</div>
+                </div>
+                
+                <div class="process-arrow">→</div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Магнитоидная обработка</div>
+                    <div class="step-desc">600-1200°C, 2.5 Тл</div>
+                </div>
+                
+                <div class="process-arrow">→</div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Концентрирование</div>
+                    <div class="step-desc">ГЭБ-панели, 250-400°C</div>
+                </div>
+                
+                <div class="process-arrow">→</div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Регенерация</div>
+                    <div class="step-desc">96% возврат сырья</div>
+                </div>
+            </div>
+            
+            <p>Система работает по принципу полного замкнутого цикла: промышленные выбросы не просто очищаются, а преобразуются в ценное сырье, которое возвращается в производственный процесс.</p>
+        </div>
+        
+        <div class="page-footer">Проектный реферат: Технология RECOV-NIB</div>
+        <div class="page-number">2</div>
+    </div>
+    
+    <!-- Страница 3: Технология и экономика -->
+    <div class="page">
+        <div class="section">
+            <div class="section-title">2. ТЕХНОЛОГИЧЕСКОЕ ОПИСАНИЕ</div>
+            
+            <div class="subsection-title">2.1. Научная основа технологии</div>
+            <p>Технология RECOV-NIB основана на принципе физики абсорбции, использующей магнитоидные токи и прочные энергии для сепарации компонентов газовых смесей. Ключевые физико-химические процессы включают:</p>
+            
+            <table>
+                <tr>
+                    <th>Процесс</th>
+                    <th>Описание</th>
+                    <th>Параметры</th>
+                </tr>
+                <tr>
+                    <td>Термодиффузия</td>
+                    <td>Разделение компонентов под воздействием градиента температуры</td>
+                    <td>20-1200°C</td>
+                </tr>
+                <tr>
+                    <td>Магнитофорез</td>
+                    <td>Движение частиц в магнитном поле в зависимости от магнитных свойств</td>
+                    <td>2.5 Тесла</td>
+                </tr>
+                <tr>
+                    <td>Сорбция на ГЭБ</td>
+                    <td>Поглощение компонентов на газо-энергетических балансирующих панелях</td>
+                    <td>250-400°C</td>
+                </tr>
+                <tr>
+                    <td>Криоконденсация</td>
+                    <td>Охлаждение газов для конденсации летучих компонентов</td>
+                    <td>-50°C</td>
+                </tr>
+            </table>
+            
+            <div class="subsection-title">2.2. Технические характеристики системы</div>
+            
+            <div class="financial-grid">
+                <div class="financial-item">
+                    <div class="financial-value">99%</div>
+                    <div class="financial-label">Эффективность очистки</div>
+                </div>
+                
+                <div class="financial-item">
+                    <div class="financial-value">96%</div>
+                    <div class="financial-label">Возврат сырья</div>
+                </div>
+                
+                <div class="financial-item">
+                    <div class="financial-value">38 ч</div>
+                    <div class="financial-label">Полный цикл обработки</div>
+                </div>
+                
+                <div class="financial-item">
+                    <div class="financial-value">85%</div>
+                    <div class="financial-label">Энергоэффективность</div>
+                </div>
+            </div>
+            
+            <p>Система автоматизирована и контролируется ИИ, который анализирует более 500 параметров в реальном времени, оптимизируя процесс для максимальной эффективности.</p>
+        </div>
+        
+       
+        
+        <div class="section">
+            <div class="section-title">3. КОНКУРЕНТНЫЕ ПРЕИМУЩЕСТВА</div>
+            
+            <table>
+                <tr>
+                    <th>Параметр</th>
+                    <th>Традиционные системы</th>
+                    <th>RECOV-NIB</th>
+                </tr>
+                <tr>
+                    <td>Эффективность очистки</td>
+                    <td>70-85%</td>
+                    <td><strong>99%</strong></td>
+                </tr>
+                <tr>
+                    <td>Возврат сырья</td>
+                    <td>0-15%</td>
+                    <td><strong>96%</strong></td>
+                </tr>
+                <tr>
+                    <td>Энергопотребление</td>
+                    <td>Высокое</td>
+                    <td><strong>На 25% ниже</strong></td>
+                </tr>
+                <tr>
+                    <td>Экологические показатели</td>
+                    <td>Частичное соответствие стандартам</td>
+                    <td><strong>Полное соответствие</strong></td>
+                </tr>
+               
+            </table>
+            
+            <p class="key-point">Ключевое отличие: традиционные системы создают затраты, а RECOV-NIB генерирует доход.</p>
+        </div>
+      
+        <div class="section">
+            <div class="section-title">4. РИСКИ И МИТИГАЦИЯ</div>
+            
+            <div class="subsection-title">4.1. Технологические риски</div>
+            <ul>
+                <li><strong>Риск:</strong> Сложность интеграции с существующим оборудованием</li>
+                <li><strong>Митигация:</strong> Модульная конструкция, поэтапное внедрение, тестовый запуск</li>
+            </ul>
+            
+            <div class="subsection-title">4.2. Рыночные риски</div>
+            <ul>
+                <li><strong>Риск:</strong> Изменение экологического законодательства</li>
+                <li><strong>Митигация:</strong> Технология опережает текущие требования на 5-7 лет</li>
+            </ul>
+            
+        </div>
+      
+       <div class="page-footer">Конфиденциально. Данный документ предназначен только для ознакомления потенциальными инвесторами.</div>
+       <div class="page-number">3</div>
+    
+    
+    <script>
+        // Для корректного отображения номеров страниц при печати
+        document.addEventListener('DOMContentLoaded', function() {
+            // Добавляем стили для печати
+            const printStyles = `
+                @media print {
+                    @page {
+                        size: A4;
+                        margin: 20mm;
+                    }
+                    
+                    body {
+                        width: 210mm;
+                        height: 297mm;
+                    }
+                    
+                    .page {
+                        page-break-after: always;
+                        break-after: page;
+                    }
+                    
+                    .page:last-child {
+                        page-break-after: auto;
+                    }
+                }
+            `;
+            
+            const styleSheet = document.createElement('style');
+            styleSheet.textContent = printStyles;
+            document.head.appendChild(styleSheet);
+        });
+    </script>
+</body>
+</html>
